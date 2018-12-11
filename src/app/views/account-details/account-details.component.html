@@ -1,0 +1,19 @@
+<div class="container mt-3">
+  <p>
+    <span class="font-weight-bold">Identificador de cuenta</span>
+    <span>{{ActualAccount.getId()}}</span>
+  </p>
+  <p>
+    <span class="font-weight-bold">Propietario</span>
+    <span>{{ActualAccount.getName()}}</span>
+  </p>
+  <p>
+    <span class="font-weight-bold">Tipo de cuenta</span>
+    <span>{{ActualAccount.getType()}}</span>
+  </p>
+  <p>
+    <span class="font-weight-bold">Cantidad</span>
+    <span>{{ActualAccount.getAmmount()}}€</span>
+  </p>
+  <a [routerLink]="['/']" class="btn btn-secondary">Volver</a>
+</div>
