@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './views/header/header.component';
 import { AccountListComponent } from './views/account-list/account-list.component';
 import { AccountDetailsComponent } from './views/account-details/account-details.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AccountDetailsComponent } from './views/account-details/account-details
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

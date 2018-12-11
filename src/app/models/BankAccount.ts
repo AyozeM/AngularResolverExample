@@ -10,12 +10,12 @@ export class BankAccount {
   private type: string;
   private ammount: number;
 
-  constructor(data:BankAccountInterface = null){
+  constructor(data = null){
     if(data){
       this.id = data.id;
-      this.name = data.name;
+      this.name = data.client;
       this.type = data.type;
-      this.ammount = data.ammount;
+      this.ammount = data.amount;
     }
   }
   /**

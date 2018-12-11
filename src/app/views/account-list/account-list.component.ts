@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api/api.service';
-import { BankAccount } from 'src/app/services/api/BankAccount';
+import { BankAccount } from 'src/app/models/BankAccount';
 
 @Component({
   selector: 'app-account-list',

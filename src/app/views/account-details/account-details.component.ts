@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BankAccount } from 'src/app/services/api/BankAccount';
+import { BankAccount } from 'src/app/models/BankAccount';
 @Component({
   selector: 'app-account-details',
   templateUrl: './account-details.component.html',

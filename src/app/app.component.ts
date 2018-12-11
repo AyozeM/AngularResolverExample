@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from './services/api/api.service';
-import { BankAccount } from './services/api/BankAccount';
+import { BankAccount } from './models/BankAccount';
 
 @Component({
   selector: 'app-root',
