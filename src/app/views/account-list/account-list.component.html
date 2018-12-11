@@ -1,18 +1,31 @@
 <table class="table">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Entidad</th>
-        <th>Tipo de cuenta</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let account of BankAccounts">
-        <td>{{account.getId()}}</td>
-        <td>{{account.getName()}}</td>
-        <td>{{account.getType()}}</td>
-        <td class="text-right"><a [routerLink]="['details', account.getId()]">Detalles</a></td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Entidad</th>
+      <th>Tipo de cuenta</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngIf="BankAccounts$ | async as BankAccounts; else loadingOrError" >
+    <tr *ngFor="let account of BankAccounts">
+      <td>{{account.getId()}}</td>
+      <td>{{account.getName()}}</td>
+      <td>{{account.getType()}}</td>
+      <td class="text-right"><a [routerLink]="['details', account.getId()]">Detalles</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #loadingOrError>
+  <tr *ngIf="LoadingError$ | async ; else loading">
+    <td class="text-danger">Hubo un error al obtener las cuentas</td>
+  </tr>
+
+  <ng-template #loading>
+    <tr>
+      <td>Cargando...</td>
+    </tr>
+  </ng-template>
+
+</ng-template>

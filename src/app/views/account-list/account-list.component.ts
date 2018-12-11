@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api/api.service';
 import { BankAccount } from 'src/app/models/BankAccount';
+import { Observable, Subject, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account-list',
@@ -8,17 +10,20 @@ import { BankAccount } from 'src/app/models/BankAccount';
   styleUrls: ['./account-list.component.css']
 })
 export class AccountListComponent implements OnInit {
-  BankAccounts:BankAccount[] = [];
-  constructor(private ApiService:ApiService) { }
+
+  BankAccounts$: Observable<any>;
+  LoadingError$ = new Subject<boolean>();
+
+  constructor(private ApiService: ApiService) { }
 
   ngOnInit() {
-    this.ApiService.getBankAccounts().subscribe(
-      dbAccounts => this.BankAccounts = dbAccounts,
-      error =>{
-        alert('Hubo un error mire la consola');
-        console.error(error);
-
-      }
+    this.LoadingError$.next(false);
+    this.BankAccounts$ = this.ApiService.getBankAccounts().pipe(
+      catchError(err=>{
+        console.error(err);
+        this.LoadingError$.next(true);
+        return of();
+      })
     );
   }
 
